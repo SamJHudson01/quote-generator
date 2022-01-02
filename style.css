@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+
 html {
     box-sizing: border=box;
 }
@@ -5,4 +7,99 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
+    background-color: hsl(204, 31%, 81%);
+    background-image: url("../../joel-filipe-uHJubAEZklE-unsplash.jpeg");
+    background-size: cover;
+    background-blend-mode: soft-light;
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 55, 33, 0.25); /* Black background with opacity */
+    z-index: -1;
+}
+
+.quote-container {
+    width: auto;
+    max-width: 900px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.quote-text {
+    font-size: 2.75rem;
+}
+
+.fa-quote-left {
+    font-size: 4rem;
+}
+
+.quote-author {
+    margin-top: 15px;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.button-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: linen;
+    height: 2.5rem;
+    border-radius: 10px;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    outline: none;
+    padding: 0.5rem 1.8rem;
+    box-shadow: 0 0.2rem lightslategrey;
+    
+}
+
+.button:hover {
+    filter: brightness(120%);
+}
+
+.button:active {
+    transform:translate(0, 0.15rem);
+    box-shadow: none; 
+}
+
+.twitter-button {
+    font-size: 1.5rem;
+}
+
+.twitter-button:hover {
+    color: #1DA1F2;
+}
+
+/* Media Query: Tablet or Smaller */
+@media screen and (max-width: 1000px) {
+    .quote-container {
+        margin: auto 10px;
+    }
+    .quote-text {
+        font-size: 2rem;
+    }
+    .quote-author {
+        font-size: 1.75rem;
+    }
 }
