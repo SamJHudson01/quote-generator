@@ -1,9 +1,9 @@
-const quoteContainer = document.getElementById('quote-container');
-const quoteText = document.getElementById('quote');
-const quoteAuthor = document.getElementById('author');
-const twitterBtn = document.getElementById('twitter');
-const newQuoteBtn = document.getElementById('new-quote');
-const loader = document.getElementById('loader');
+const quoteContainer = document.getElementById("quote-container");
+const quoteText = document.getElementById("quote");
+const quoteAuthor = document.getElementById("author");
+const twitterBtn = document.getElementById("twitter");
+const newQuoteBtn = document.getElementById("new-quote");
+const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
@@ -18,22 +18,22 @@ function complete() {
 }
 
 //Show new quote
-function newQuote(){
+function newQuote() {
     loading();
-    const randomNumber = Math.floor(Math.random() * (apiQuotes.length));
+    const randomNumber = Math.floor(Math.random() * apiQuotes.length);
 
     if (apiQuotes[randomNumber].author) {
         quoteAuthor.textContent = apiQuotes[randomNumber].author;
     } else {
-        quoteAuthor.textContent = 'Unknown';
+        quoteAuthor.textContent = "Unknown";
     }
-    
+
     if (apiQuotes[randomNumber].text.length > 70) {
-        quoteText.classList.add('long-quote');
+        quoteText.classList.add("long-quote");
     } else {
-        quoteText.classList.remove('long-quote');
+        quoteText.classList.remove("long-quote");
     }
-        quoteText.textContent = apiQuotes[randomNumber].text;
+    quoteText.textContent = apiQuotes[randomNumber].text;
     complete();
 }
 
@@ -55,7 +55,7 @@ newQuoteBtn.addEventListener("click", newQuote);
 
 function tweetQuote() {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${quoteAuthor.textContent}`;
-    window.open(twitterUrl, 'blank');
+    window.open(twitterUrl, "blank");
 }
 
 newQuoteBtn.addEventListener("click", newQuote);
