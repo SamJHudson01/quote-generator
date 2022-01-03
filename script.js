@@ -4,8 +4,18 @@ const quoteAuthor = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
+const previousQuoteBtn = document.getElementById("previous-quote-button");
 
 let apiQuotes = [];
+let displayedQuotes =[];
+
+function noPreviousQuote() {
+    if (!displayedQuotes.length) {
+        previousQuoteBtn.hidden = true;
+    } else {
+        previousQuoteBtn.hidden = false;
+    }
+}
 
 function loading() {
     loader.hidden = false;
@@ -34,7 +44,27 @@ function newQuote() {
         quoteText.classList.remove("long-quote");
     }
     quoteText.textContent = apiQuotes[randomNumber].text;
+
+    noPreviousQuote();
+    displayedQuotes.push(apiQuotes[randomNumber]);
     complete();
+}
+
+displayedQuotesCounter = 2;
+
+function previousQuote() {
+    if (displayedQuotes[displayedQuotes.length - displayedQuotesCounter].author) {
+        quoteAuthor.textContent = displayedQuotes[displayedQuotes.length - displayedQuotesCounter].author;
+    } else {
+        quoteAuthor.textContent = "Unknown";
+    }
+    if (displayedQuotes[displayedQuotes.length - displayedQuotesCounter].text.length > 70) {
+        quoteText.classList.add("long-quote");
+    } else {
+        quoteText.classList.remove("long-quote");
+    }
+    quoteText.textContent = displayedQuotes[displayedQuotes.length - displayedQuotesCounter].text;
+    displayedQuotesCounter +=1;
 }
 
 // Get quotes from API
@@ -60,5 +90,6 @@ function tweetQuote() {
 
 newQuoteBtn.addEventListener("click", newQuote);
 twitterBtn.addEventListener("click", tweetQuote);
+previousQuoteBtn.addEventListener("click", previousQuote);
 
 getQuotes();
